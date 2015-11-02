@@ -58,6 +58,25 @@
 							<outputDirectory>${tomcat.deploy.dir}</outputDirectory>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-libs</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.h2database</groupId>
+									<artifactId>h2</artifactId>
+									<version>1.4.190</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${tomcat.lib.dir}</outputDirectory>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>

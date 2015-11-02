@@ -27,7 +27,7 @@
 		defaultTransactionIsolation="READ_COMMITTED"
 		username="sa"
         password=""
-		driverClassName="org.Driver"
-		url="jdbc:h2:tcp://localhost:1433/${catalina.home}/work/application;LOCK_MODE=0;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;IGNORECASE=TRUE;"/>
+		driverClassName="org.h2.Driver"
+		url="jdbc:h2:file:${catalina.home}/work/application;LOCK_MODE=0;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;IGNORECASE=TRUE;"/>
 
 </Context>
