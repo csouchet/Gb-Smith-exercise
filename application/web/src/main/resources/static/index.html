@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<title>Hello AngularJS</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="js/angular-bootstrap.js" type="text/javascript"></script>
+<script src="js/user.js"></script>
+
+<link href="css/angular-bootstrap.css" rel="stylesheet">
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}
+</style>
+</head>
+
+<body ng-app="User" ng-cloak class="ng-cloak">
+	<div ng-controller="UserController">
+		<p>The ID is {{user.id}}</p>
+		<p>The firstname is {{user.firstname}}</p>
+		<p>The lastname is {{user.lastname}}</p>
+	</div>
+
+	<div class="alert alert-danger" ng-show="error">There was a
+		crating problem. Please try again.</div>
+	<form role="form" ng-submit="login()" ng-controller="UserController">
+		<div class="form-group">
+			<label for="id">Identifier:</label> <input type="text"
+				class="form-control" id="id" name="id" ng-model="user.id" />
+		</div>
+		<div class="form-group">
+			<label for="firstname">Firstname:</label> <input type="firstname"
+				class="form-control" id="firstname" name="firstname"
+				ng-model="user.firstname" />
+		</div>
+		<div class="form-group">
+			<label for="lastname">Lastname:</label> <input type="lastname"
+				class="form-control" id="lastname" name="lastname"
+				ng-model="user.lastname" />
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</body>
+</html>
