@@ -1,0 +1,19 @@
+<!--
+    Copyright 2015 Souchet Céline
+-->
+<ng-view>
+
+    <ng-form>
+        <label>Id:
+            <input type="text" name="input" ng-model="user.id" required ng-trim="false">
+        </label>
+        button -> find
+    </ng-form>
+
+
+    <div class="check-element animate-hide" ng-hide="user.firstname == null">
+        Firstname: {{user.firstname}}<br />
+        Lastname: {{user.lastname}}<br />
+    </div>
+
+</ng-view>
