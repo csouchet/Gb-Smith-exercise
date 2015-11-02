@@ -27,9 +27,9 @@ http://localhost:8280/gbsmith-application/
 
 # Rest API
 ------------------
-Return a user : GET http://localhost:8280/api/user/:id
-Delete a user : DELETE http://localhost:8280/api/user/:id
-Create a user : PUT http://localhost:8280/api/user/:user
+Create a user : PUT http://localhost:8280/gbsmith-application/user?id=1&firstname=toto&lastname=titi
+Return a user : GET http://localhost:8280/gbsmith-application/user?id=1
+Delete a user : DELETE http://localhost:8280/gbsmith-application/user?id=1
 
 
 Specification :

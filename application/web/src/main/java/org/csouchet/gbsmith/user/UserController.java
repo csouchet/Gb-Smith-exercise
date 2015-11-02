@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping(path = "/api/user", produces = "application/json")
+@RequestMapping(path = "/user", produces = "application/json")
 @Transactional
 public class UserController {
 

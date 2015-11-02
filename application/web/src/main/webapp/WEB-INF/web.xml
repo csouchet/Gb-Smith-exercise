@@ -21,7 +21,7 @@
 
     <servlet-mapping>
         <servlet-name>root</servlet-name>
-        <url-pattern>/gbsmith-application/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
     <resource-ref>
