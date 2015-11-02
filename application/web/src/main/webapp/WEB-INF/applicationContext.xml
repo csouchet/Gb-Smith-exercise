@@ -8,10 +8,8 @@
 	 <context:annotation-config /> 
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!-- <mvc:annotation-driven /> -->
-
-	<!-- enable Spring @Component scan -->
-	<!-- <context:component-scan base-package="org.csouchet.gbsmith" /> -->
+	<mvc:annotation-driven />
+	<import resource="persitence-context.xml"/>
 
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">

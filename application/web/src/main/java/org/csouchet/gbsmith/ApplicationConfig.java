@@ -6,8 +6,10 @@ package org.csouchet.gbsmith;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  */
 @Configuration
 @EnableWebMvc
+@EnableJpaRepositories(basePackages = "org.csouchet.gbsmith.persistence")
 @ComponentScan(basePackages = "org.csouchet.gbsmith")
 public class ApplicationConfig extends WebMvcConfigurationSupport {
 
@@ -27,5 +30,10 @@ public class ApplicationConfig extends WebMvcConfigurationSupport {
 		// Configure to convert JSON to POJO and vice versa in the request and response
 		handlerAdapter.getMessageConverters().add(0, new MappingJackson2HttpMessageConverter());
 		return handlerAdapter;
+	}
+
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 }
