@@ -1,9 +1,8 @@
 /**
  * Copyright Céline Souchet
  */
-package org.csouchet.gbsmith.user;
+package org.csouchet.gbsmith.persistence;
 
-import org.csouchet.gbsmith.persitence.SUser;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**

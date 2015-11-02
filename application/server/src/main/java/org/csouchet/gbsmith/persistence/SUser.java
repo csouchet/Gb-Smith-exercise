@@ -1,7 +1,7 @@
 /**
  * Copyright Céline Souchet
  */
-package org.csouchet.gbsmith.persitence;
+package org.csouchet.gbsmith.persistence;
 
 import java.io.Serializable;
 

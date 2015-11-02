@@ -3,7 +3,7 @@
  */
 package org.csouchet.gbsmith.user;
 
-import org.csouchet.gbsmith.persitence.SUser;
+import org.csouchet.gbsmith.persistence.SUser;
 
 /**
  * @author Souchet Celine
