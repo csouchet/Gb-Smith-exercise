@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.csouchet</groupId>
+		<artifactId>gbsmith</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.csouchet.gbsmith</groupId>
+	<artifactId>tomcat</artifactId>
+	<packaging>pom</packaging>
+	<name>Tomcat</name>
+	<description>Build &amp; Configurate a Tomcat bundle</description>
+
+	<properties>
+		<tomcat.name>apache-tomcat-${tomcat.version}</tomcat.name>
+		<tomcat.zip.name>${tomcat.name}.zip</tomcat.zip.name>
+		<tomcat.home>${project.build.directory}/${tomcat.name}</tomcat.home>
+		<tomcat.deploy.dir>${tomcat.home}/webapps</tomcat.deploy.dir>
+		<tomcat.lib.dir>${tomcat.home}/lib</tomcat.lib.dir>
+		<tomcat.conf.dir>${tomcat.home}/conf</tomcat.conf.dir>
+
+		<tomcat.url>http://archive.apache.org/dist/tomcat/tomcat-8/v${tomcat.version}/bin/${tomcat.zip.name}</tomcat.url>
+		<tomcat.zip.folder>${java.io.tmpdir}</tomcat.zip.folder>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>ant-contrib</groupId>
+			<artifactId>ant-contrib</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<!-- Unpack Wars -->
+					<execution>
+						<id>unpack-wars</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.csouchet.gbsmith.application</groupId>
+									<artifactId>web</artifactId>
+									<version>${project.version}</version>
+									<destFileName>gbsmith-application.war</destFileName>
+									<type>war</type>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${tomcat.deploy.dir}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>configure-tomcat</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<!-- Tomcat -->
+								<taskdef name="if" classname="${if.task}" classpathref="maven.runtime.classpath" />
+								<available property="tomcat.present" file="${tomcat.zip.folder}/${tomcat.zip.name}" />
+								<if>
+									<not>
+										<isset property="tomcat.present" />
+									</not>
+									<then>
+										<get src="${tomcat.url}" dest="${tomcat.zip.folder}/${tomcat.zip.name}" />
+									</then>
+								</if>
+								<unzip dest="${project.build.directory}" src="${tomcat.zip.folder}/${tomcat.zip.name}" />
+
+								<!-- Copy all resources from project to Tomcat -->
+								<copy overwrite="true" todir="${tomcat.home}">
+									<fileset dir="${project.basedir}/src/main/resources/tomcat" />
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+							<finalName>Tomcat-${tomcat.version}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<descriptor>assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

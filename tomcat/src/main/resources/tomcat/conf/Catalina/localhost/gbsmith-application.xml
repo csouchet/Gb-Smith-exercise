@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context reloadable="true">
+
+  <!--  To not persist the session after reboot tomcat -->
+  <Manager pathname="" />
+
+  <!-- To add all files in the conf/integration directory to the classpath -->
+  <Resources>
+    <PreResources className="org.apache.catalina.webresources.DirResourceSet" 
+                  base="${catalina.home}/conf/application"
+                  webAppMount="/WEB-INF/classes" />
+  </Resources>
+		
+    <!-- ################################################# -->
+    <!-- Configure Data sources for the standard databases -->
+    <!-- ################################################# -->
+    <!-- Don't change the name !! -->
+	<Resource name="jdbc/applicationDS" auth="Container" type="javax.sql.DataSource"
+		maxTotal="17"
+		maxIdle="5"
+		maxWaitMillis="10000"  
+        initialSize="3" 
+        validationQuery="SELECT 1"
+        validationQueryTimeout ="30000"
+        removeAbandonedOnBorrow="true" 
+        logAbandoned="true" 
+		defaultTransactionIsolation="READ_COMMITTED"
+		username="sa"
+        password=""
+		driverClassName="org.Driver"
+		url="jdbc:h2:tcp://localhost:1433/${catalina.home}/work/application;LOCK_MODE=0;MVCC=TRUE;DB_CLOSE_ON_EXIT=FALSE;IGNORECASE=TRUE;"/>
+
+</Context>
