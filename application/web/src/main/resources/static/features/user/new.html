@@ -1,0 +1,41 @@
+<!--
+    Copyright 2015 Souchet Céline
+-->
+<ng-view>
+
+    <ng-form ng-submit="createUser()" >
+        <label>Id:
+            <input type="text" name="input" ng-model="user.id" required ng-trim="false">
+        </label>
+        <label>Firstname:
+            <input type="text" name="input" ng-model="user.firstname" required ng-trim="false">
+        </label>
+        <label>Lastname:
+            <input type="text" name="input" ng-model="user.lastname" required ng-trim="false">
+        </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </ng-form>
+
+
+    <div class="alert alert-danger" ng-show="error">There was a
+        creating problem. Please try again.
+    </div>
+    <form role="form" ng-submit="createUser()" ng-controller="UserController">
+        <div class="form-group">
+            <label for="id">Identifier:</label> <input type="text"
+                                                       class="form-control" id="id" name="id" ng-model="user.id"/>
+        </div>
+        <div class="form-group">
+            <label for="firstname">Firstname:</label> <input type="firstname"
+                                                             class="form-control" id="firstname" name="firstname"
+                                                             ng-model="user.firstname"/>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname:</label> <input type="lastname"
+                                                           class="form-control" id="lastname" name="lastname"
+                                                           ng-model="user.lastname"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</ng-view>
