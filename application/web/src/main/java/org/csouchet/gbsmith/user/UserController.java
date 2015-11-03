@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,14 +49,14 @@ public class UserController {
 		// Nothing to do
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-	public User getUser(@RequestParam("id") final long id) throws FindException {
+	@RequestMapping(path="/{id}",method = RequestMethod.GET)
+	public User getUser(@PathVariable final long id) throws FindException {
 		final User user = userService.getUser(id);
 		return user;
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE)
-	public void deleteUser(@RequestParam("id") final long id, final HttpServletResponse response) throws DeleteException {
+	@RequestMapping(path="/{id}",method = RequestMethod.DELETE)
+	public void deleteUser(@PathVariable final long id, final HttpServletResponse response) throws DeleteException {
 		userService.delete(id);
 	}
 
@@ -65,13 +66,4 @@ public class UserController {
 		userService.create(id, firstname, lastname);
 	}
 
-	// @RequestMapping(method = RequestMethod.GET)
-	// public ResponseEntity<List<User>> listAllUsers() {
-	// final List<User> users = userService.findAllUsers();
-	// if (users.isEmpty()) {
-	// return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);// You many decide to return
-	// // HttpStatus.NOT_FOUND
-	// }
-	// return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-	// }
 }

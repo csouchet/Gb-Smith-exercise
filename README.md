@@ -7,7 +7,7 @@ This repository contains the exercise that I had to do for my interview at Gb &a
 
 Requirements
 -------------
->     Java JDK 1.8 or higher
+>     Java JDK 1.7 or higher
 >     Maven 3.x or higher
 
 Building the project.
@@ -15,9 +15,11 @@ Building the project.
 Just run the following Maven command:
 >     mvn clean install
 
-# Tomcat 
+Tomcat
 ------------------
-http://localhost:8280/gbsmith-application/
+You can find a Tomcat bundle already configured (Datasource, War, Log) in the /tomcat/target directory.
+Need to unzip the Tomcat-8.0.28.zip file.
+To start Tomcat, use the startup.bat or startup.sh script in <TOMCAT_HOME>/bin.
 
     http://localhost:8280/gbsmith-application/#/user/delete : liste des Todo
     http://localhost:8280/gbsmith-application/#/user/new : saisie d'un nouveau Todo
@@ -25,11 +27,11 @@ http://localhost:8280/gbsmith-application/
 
 
 
-# Rest API
+Rest API
 ------------------
 Create a user : PUT http://localhost:8280/gbsmith-application/user?id=1&firstname=toto&lastname=titi
-Return a user : GET http://localhost:8280/gbsmith-application/user?id=1
-Delete a user : DELETE http://localhost:8280/gbsmith-application/user?id=1
+Return a user : GET http://localhost:8280/gbsmith-application/user/1
+Delete a user : DELETE http://localhost:8280/gbsmith-application/user/1
 
 
 Specification :

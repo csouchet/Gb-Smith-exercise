@@ -48,6 +48,11 @@ public class UserService {
 	public User getUser(final long id) throws FindException {
 		try {
 			final SUser sUser = sUserRepository.findOne(id);
+			if(sUser == null) {
+				String errorMessage = "Can't get the user id=" + id;
+				LOGGER.error(errorMessage);
+				throw new FindException(errorMessage);
+			}
 			final UserBuilder builder = new UserBuilder(sUser);
 			return builder.done();
 		} catch (final Exception e) {
