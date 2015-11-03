@@ -9,10 +9,6 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- 	<error-page>
-            <location>/error</location>
-        </error-page> -->
-
     <servlet>
         <servlet-name>root</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

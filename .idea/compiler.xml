@@ -29,7 +29,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="application" target="1.8" />
-      <module name="gbsmith" target="1.8" />
+      <module name="gbsmith" target="1.7" />
       <module name="server" target="1.8" />
       <module name="tomcat" target="1.8" />
       <module name="web" target="1.8" />

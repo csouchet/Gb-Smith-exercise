@@ -21,12 +21,6 @@ You can find a Tomcat bundle already configured (Datasource, War, Log) in the /t
 Need to unzip the Tomcat-8.0.28.zip file.
 To start Tomcat, use the startup.bat or startup.sh script in <TOMCAT_HOME>/bin.
 
-    http://localhost:8280/gbsmith-application/#/user/delete : liste des Todo
-    http://localhost:8280/gbsmith-application/#/user/new : saisie d'un nouveau Todo
-    http://localhost:8280/gbsmith-application/#/user/find/{id} : détail du Todo d'identifiant {id}
-
-
-
 Rest API
 ------------------
 Create a user : PUT http://localhost:8280/gbsmith-application/user?id=1&firstname=toto&lastname=titi
@@ -42,6 +36,7 @@ A web application with 3 features :
 - Delete user. Parameter(id). Return(OK/KO)
 
 Technical constraints :
+-----------------
 - REST web service through Spring annotations for the use of these 3 actions.
 - Using Maven to build the project/modules.
 - Embedded Database using JPA / Hibernate

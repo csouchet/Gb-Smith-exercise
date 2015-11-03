@@ -32,8 +32,4 @@ public class ApplicationConfig extends WebMvcConfigurationSupport {
 		return handlerAdapter;
 	}
 
-	@Override
-	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-	}
 }
