@@ -17,15 +17,15 @@ Just run the following Maven command:
 
 Tomcat
 ------------------
-You can find a Tomcat bundle already configured (Datasource, War, Log) in the /tomcat/target directory.
-Need to unzip the Tomcat-8.0.28.zip file.
-To start Tomcat, use the startup.bat or startup.sh script in <TOMCAT_HOME>/bin.
+- You can find a Tomcat bundle already configured (Datasource, War, Log) in the /tomcat/target directory.
+- Need to unzip the Tomcat-8.0.28.zip file.
+- To start Tomcat, use the startup.bat or startup.sh script in <TOMCAT_HOME>/bin.
 
 Rest API
 ------------------
-Create a user : PUT http://localhost:8280/gbsmith-application/user?id=1&firstname=toto&lastname=titi
-Return a user : GET http://localhost:8280/gbsmith-application/user/1
-Delete a user : DELETE http://localhost:8280/gbsmith-application/user/1
+- Create a user : PUT http://localhost:8280/gbsmith-application/user?id=1&firstname=toto&lastname=titi
+- Return a user : GET http://localhost:8280/gbsmith-application/user/1
+- Delete a user : DELETE http://localhost:8280/gbsmith-application/user/1
 
 
 Specification :
